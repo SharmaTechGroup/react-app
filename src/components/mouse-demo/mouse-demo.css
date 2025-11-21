@@ -1,0 +1,9 @@
+
+.box-style {
+    border:2px solid gray;
+}
+
+.box-style:hover {
+    border:4px solid blue;
+    cursor: grab;
+}
