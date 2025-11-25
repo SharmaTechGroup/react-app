@@ -1,44 +1,34 @@
-import { createContext, useContext, useState } from "react"
+import { useState } from "react";
 
-let UserContext = createContext(null);
+export function ChildComponent({onChildClick}){
 
-
-export function Level1(){
-
-    let context = useContext(UserContext);
-
-    return(
-        <div className="p-4 bg-warning text-white">
-            <h4>Level-1  Hello ! {context} </h4>
-            <Level2  />
-        </div>
-    )
-}
-export function Level2(){
-
-    let context = useContext(UserContext);
+    function ChildClick(){
+        let data = "Hello ! from Child";
+        onChildClick(data);
+    }
 
     return(
         <div className="p-4 bg-danger text-white">
-            <h4>Level-2 Hello ! {context}</h4>
+            <h4>Child Component</h4>
+            <button className="btn btn-warning" onClick={ChildClick}>Send Data to Parent</button>
         </div>
     )
 }
 
+
 export function ContextDemo(){
-    const [uname, setUname] = useState('John');
-    function handleNameChange(e){
-        setUname(e.target.value);
+    
+    const [msg, setMsg] = useState('');
+
+    function GetDataformChild(e){
+        setMsg(e);
     }
+
     return (
         <div className="container-fluid p-4 bg-dark text-white">
-            <div className="my-2">
-                <input type="text" onChange={handleNameChange} placeholder="Enter User Name" />
-            </div>
-            <h2>Parent Component - Hello ! {uname} </h2>
-            <UserContext value={uname}>
-                <Level1 />
-            </UserContext>
+             <h2>Parent Component</h2>
+             <p> {msg} </p>
+             <ChildComponent onChildClick={GetDataformChild} />
         </div>
     )
 }

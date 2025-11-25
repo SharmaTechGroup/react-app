@@ -21,9 +21,10 @@ import { ComponentDemo } from './components/component-demo/component-demo.jsx'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 import { ContextDemo } from './components/context-demo/context-demo.jsx'
 import { WeatherSearch } from './components/weather-app/weather-search.jsx'
+import { ShoppingIndex } from './shopping/shopping-index.jsx'
 
 createRoot(document.getElementById('root')).render(
   
-    <WeatherSearch />
+    <ShoppingIndex />
   
 )
