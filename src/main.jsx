@@ -22,9 +22,11 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 import { ContextDemo } from './components/context-demo/context-demo.jsx'
 import { WeatherSearch } from './components/weather-app/weather-search.jsx'
 import { ShoppingIndex } from './shopping/shopping-index.jsx'
+import { FormDemo } from './components/form-demo/form-demo.jsx'
+import { HookFormDemo } from './components/hook-form-demo/hook-form-demo.jsx'
 
 createRoot(document.getElementById('root')).render(
   
-    <ShoppingIndex />
+    <HookFormDemo />
   
 )
