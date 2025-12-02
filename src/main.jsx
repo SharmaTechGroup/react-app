@@ -24,9 +24,11 @@ import { WeatherSearch } from './components/weather-app/weather-search.jsx'
 import { ShoppingIndex } from './shopping/shopping-index.jsx'
 import { FormDemo } from './components/form-demo/form-demo.jsx'
 import { HookFormDemo } from './components/hook-form-demo/hook-form-demo.jsx'
+import { ReactNewFormDemo } from './components/react-new-form-demo/react-new-form-demo.jsx'
+import { TutorialIndex } from './tutorials/tutorial-index.jsx'
 
 createRoot(document.getElementById('root')).render(
   
-    <HookFormDemo />
+    <TutorialIndex />
   
 )
