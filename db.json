@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "a119",
+      "user_id": "david_nit",
+      "user_name": "David",
+      "password": "david@11",
+      "email": "david@outlook.com",
+      "mobile": "+919876543211"
+    },
+    {
+      "id": "2bbe",
+      "user_id": "John_123",
+      "user_name": "John",
+      "password": "john@123",
+      "email": "john@gmail.com",
+      "mobile": "+919876543210"
+    }
+  ],
+  "appointments": [
+    {
+       "title": "Project Review",
+       "description": "Prepare finaly presentation for project",
+       "date": "2025-12-08",
+       "user_id": "david_nit"
+    },
+    {
+       "title": "Friend Birthday",
+       "description": "Party @ 5:00 PM",
+       "date": "2025-12-10",
+       "user_id": "John_123"
+    },
+     {
+       "title": "React Workshop",
+       "description": "Workshop on React 19",
+       "date": "2025-12-07",
+       "user_id": "david_nit"
+    }
+  ]
+}

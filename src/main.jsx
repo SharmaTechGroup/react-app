@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 
 import App from './App.jsx'
 import Login from './components/login/login.jsx'
@@ -27,9 +28,13 @@ import { HookFormDemo } from './components/hook-form-demo/hook-form-demo.jsx'
 import { ReactNewFormDemo } from './components/react-new-form-demo/react-new-form-demo.jsx'
 import { TutorialIndex } from './tutorials/tutorial-index.jsx'
 import { FakestoreIndex } from './fakestore/fakestore-index.jsx'
+import { ToDoIndex } from './to-do/todo-index.jsx'
+import { CookiesProvider } from 'react-cookie';
 
 createRoot(document.getElementById('root')).render(
   
-    <FakestoreIndex />
+   <CookiesProvider>
+      <ToDoIndex />
+   </CookiesProvider>
   
 )

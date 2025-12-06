@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { FakestoreHome } from "./fakestore-home";
 import { FakestoreProducts } from "./fakestore-products";
 import { FakestoreDetails } from "./fakestore-details";
 import { FakestoreSearch } from "./fakestore-search";
+import { FakestoreLogin } from "./fakestore-login";
 
 export function FakestoreIndex(){
     return(
@@ -17,7 +18,8 @@ export function FakestoreIndex(){
                     </form>
                 </div>
                 <div>
-                    <span className="bi bi-cart4 fs-2 text-warning"></span>
+                    <button className="btn btn-warning"><span className="bi bi-cart4"></span></button>
+                    <Link to="/login" className="btn mx-2 btn-danger bi bi-person"></Link>
                 </div>
             </header>
             <section className="mt-3">
@@ -27,6 +29,7 @@ export function FakestoreIndex(){
                        <Route path="details/:id" element={<FakestoreDetails />} />
                     </Route>
                     <Route path="search" element={<FakestoreSearch />} />
+                    <Route path="login" element={<FakestoreLogin />} />
                 </Routes>
             </section>
             </BrowserRouter>
