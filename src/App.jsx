@@ -4,12 +4,17 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  /* re-render triggers:
+  setCount(...)      // state changes
+  <Component x={y} /> // props change
+  <Parent /> re-renders // child re-renders
+  useContext(...)    // context value changes
+  */
   return (
     
       <div>
-           <h1>Welcome to React 19x</h1>
+           <h1>What is Re-Render?</h1>
       </div>
      
   )

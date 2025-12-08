@@ -3,6 +3,8 @@ import { ToDoHome } from "./todo-home";
 import { ToDoLogin } from "./todo-login";
 import { ToDoRegister } from "./todo-register";
 import { UserDashboard } from "./user-dashboard";
+import { AddAppointment } from "./add-appointment";
+import { EditAppointment } from './edit-appointment'; 
 
 
 export function ToDoIndex(){
@@ -17,7 +19,10 @@ export function ToDoIndex(){
                          <Route path="/" element={<ToDoHome />} />
                          <Route path="login" element={<ToDoLogin size='w-25' />} />
                          <Route path="register" element={<ToDoRegister size='w-25'/>} />
-                         <Route path="dashboard" element={<UserDashboard />} />
+                         <Route path="dashboard" element={<UserDashboard />} >
+                             <Route path="add-appointment" element={<AddAppointment />} />
+                             <Route path="edit-appointment/:id" element={<EditAppointment />} />
+                         </Route>
                     </Routes>
                 </section>
             </BrowserRouter>
