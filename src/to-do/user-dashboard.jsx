@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useCookies } from "react-cookie"
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
@@ -9,18 +9,19 @@ export function UserDashboard(){
 
 
     const [appointments, setAppointments] = useState([{id:null, title:null, description:null, date:Date, user_id:null}]);
+    const [searchString, setSearchString] = useState('');
 
     const [cookies, setCookie, removeCookie] = useCookies(['userid', 'username']);
     const navigate = useNavigate();
 
-    function LoadAppointments(){
+    const LoadAppointments = useCallback(()=>{
          axios.get(`http://localhost:3000/appointments`)
          .then(response=>{
              let appointments =  response.data.filter(appointment=> appointment.user_id===cookies['userid']);
              setAppointments(appointments);
              
          })
-    }
+    },[])
 
     useEffect(()=>{
         if(cookies['userid']===undefined){
@@ -31,25 +32,43 @@ export function UserDashboard(){
         }
     },[cookies['userid'], appointments])
 
-    function handleSignout(){
+    const handleSignout = useCallback(()=>{
         removeCookie('userid');
         removeCookie('username');
         navigate('/login');
-    }
+    },[removeCookie, navigate])
 
-    function handleDeleteClick(id){
+
+    const handleDeleteClick = useCallback((id)=>{
         let choice = confirm('Are you sure\nWant to Delete?');
         if(choice===true){
             axios.delete(`http://localhost:3000/appointments/${id}`)
             .then(()=>{console.log('deleted..')});
             navigate('/dashboard');
         }
+    },[appointments])
+
+    const FilteredAppointments = useMemo(()=>{
+         let filteredList = [...appointments];
+         if(searchString===""){
+            filteredList = [...appointments];
+         } else {
+            filteredList = filteredList.filter(appointment=> appointment.title===searchString);
+         }     
+         return filteredList;
+    })
+
+    function handleSearchChange(e){
+        setSearchString(e.target.value);
     }
 
     return(
         <div className="container-fluid">
             <div role="header" className="d-flex justify-content-between p-2">
                 <div className="fw-bold fs-4">Dashboard <Link to="add-appointment" className="btn btn-dark bi bi-plus"> Add Appointment </Link> </div>
+                <div>
+                    <input type="text" onChange={handleSearchChange} placeholder="Search by Title" className="form-control" />
+                </div>
                 <div>
                     <span className="bi bi-person-circle"> {cookies['username']} <button onClick={handleSignout} className="btn btn-link">Signout</button> </span>
                 </div>
@@ -59,7 +78,7 @@ export function UserDashboard(){
                     <div role="section" className="mt-3">
                     <div className="d-flex w-100 flex-row overflow-auto flex-wrap">
                         {
-                            appointments.map(appointment=>
+                            FilteredAppointments.map(appointment=>
                                 <div key={appointment.title} className="alert m-2 w-50 alert-dismissible alert-light shadow shadow-md">
                                     <h4>{appointment.title}</h4>
                                     <p>{appointment.description}</p>

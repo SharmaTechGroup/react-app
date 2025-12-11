@@ -30,6 +30,7 @@ import { TutorialIndex } from './tutorials/tutorial-index.jsx'
 import { FakestoreIndex } from './fakestore/fakestore-index.jsx'
 import { ToDoIndex } from './to-do/todo-index.jsx'
 import { CookiesProvider } from 'react-cookie';
+import { EffectDemo } from './components/effect-demo/effect-demo.jsx';
 
 createRoot(document.getElementById('root')).render(
   

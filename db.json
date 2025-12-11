@@ -33,18 +33,18 @@
       "id": "9698"
     },
     {
-      "title": "React 19 Bootcamp",
-      "description": "Workshop on React 19 - New Features",
-      "date": "2025-12-12",
-      "user_id": "david_nit",
-      "id": "030e"
-    },
-    {
       "id": "26f2",
       "title": "React JS Class",
       "description": "attend for demos @ 7:30 AM",
       "date": "2025-12-16",
       "user_id": "John_123"
+    },
+    {
+      "id": "a1d1",
+      "title": "Submit Project",
+      "description": "Prepare a production folder to submit",
+      "date": "2025-12-18",
+      "user_id": "david_nit"
     }
   ]
 }

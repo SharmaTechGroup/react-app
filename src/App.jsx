@@ -5,19 +5,18 @@ import './App.css'
 
 function App() {
 
-  /* re-render triggers:
-  setCount(...)      // state changes
-  <Component x={y} /> // props change
-  <Parent /> re-renders // child re-renders
-  useContext(...)    // context value changes
-  */
+   const [data] = useState(()=> expensiveFunction());
+
+   function expensiveFunction(){
+       JSON.parse(localStorage.getItem("data"));
+    }
+  
   return (
     
-      <div>
-           <h1>What is Re-Render?</h1>
-      </div>
+    <div>
+          <h1>Lazy Initialization</h1>
+    </div>
      
   )
 }
-
 export default App

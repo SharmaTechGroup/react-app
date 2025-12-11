@@ -2,11 +2,20 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import { useCaptcha } from "../hooks/captcha";
+import { useFetch } from "../hooks/fetch-data";
+import { useSentenceCase } from "../hooks/sentence-case";
+import { useState } from "react";
 
 
 export function ToDoLogin(props){
 
     const [cookies, setCookie, removeCookie] = useCookies(['userid', 'username']);
+
+    let code = useCaptcha();
+
+    
+
 
     const navigate = useNavigate();
     const formik = useFormik({
@@ -38,6 +47,7 @@ export function ToDoLogin(props){
     return(
         <div className="container-fluid">
            <div className={props.size}>
+            
             <form onSubmit={formik.handleSubmit}>
                  <h4>User Login</h4>
              <dl>
@@ -45,12 +55,15 @@ export function ToDoLogin(props){
                 <dd><input type="text" onChange={formik.handleChange} name="user_id" className="form-control" /></dd>
                 <dt>Password</dt>
                 <dd><input type="password" onChange={formik.handleChange} name="password" className="form-control" /></dd>
+                <dt>Verify Code</dt>
+                <dd>{code}</dd>
             </dl>
             <button type="submit" className="btn btn-warning w-100">Login</button>
             </form>
             <div className="mt-3">
                 <Link to="/register"> New User ? </Link>
             </div>
+           
            </div>
         </div>
     )
