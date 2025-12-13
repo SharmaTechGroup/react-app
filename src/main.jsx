@@ -31,11 +31,16 @@ import { FakestoreIndex } from './fakestore/fakestore-index.jsx'
 import { ToDoIndex } from './to-do/todo-index.jsx'
 import { CookiesProvider } from 'react-cookie';
 import { EffectDemo } from './components/effect-demo/effect-demo.jsx';
+import { LiveVideo } from './components/live-video/live-video.jsx';
+import store from './store/store.jsx';
+import { Provider } from 'react-redux';
 
 createRoot(document.getElementById('root')).render(
   
    <CookiesProvider>
-      <ToDoIndex />
+      <Provider store={store}>
+         <ToDoIndex />
+      </Provider>
    </CookiesProvider>
   
 )

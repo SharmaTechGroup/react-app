@@ -2,12 +2,16 @@ import axios from "axios";
 import moment from "moment";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useCookies } from "react-cookie"
+import { useDispatch } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { addToArchive } from "../slicers/task-slicer";
+import store from "../store/store";
 
 
 export function UserDashboard(){
 
 
+    let dispatch = useDispatch();
     const [appointments, setAppointments] = useState([{id:null, title:null, description:null, date:Date, user_id:null}]);
     const [searchString, setSearchString] = useState('');
 
@@ -62,6 +66,11 @@ export function UserDashboard(){
         setSearchString(e.target.value);
     }
 
+    function handleAddToArchiveClick(appointment){
+         alert('Your Appointment Archived..');
+         dispatch(addToArchive(appointment));
+    }
+
     return(
         <div className="container-fluid">
             <div role="header" className="d-flex justify-content-between p-2">
@@ -70,6 +79,7 @@ export function UserDashboard(){
                     <input type="text" onChange={handleSearchChange} placeholder="Search by Title" className="form-control" />
                 </div>
                 <div>
+                    <span className="bi bi-archive-fill"> [{store.getState().archivedCount}] </span>
                     <span className="bi bi-person-circle"> {cookies['username']} <button onClick={handleSignout} className="btn btn-link">Signout</button> </span>
                 </div>
             </div>
@@ -88,6 +98,7 @@ export function UserDashboard(){
                                     <div className="mt-3">
                                         <Link to={`edit-appointment/${appointment.id}`} className="btn btn-warning bi bi-pen-fill"></Link>
                                         <button onClick={()=>{handleDeleteClick(appointment.id)}} className="btn mx-2 btn-danger bi bi-trash-fill"></button>
+                                        <button onClick={()=> {handleAddToArchiveClick(appointment)}} className="btn btn-dark bi bi-archive"></button>
                                     </div>
                                 </div>
                             )
