@@ -34,12 +34,13 @@ import { EffectDemo } from './components/effect-demo/effect-demo.jsx';
 import { LiveVideo } from './components/live-video/live-video.jsx';
 import store from './store/store.jsx';
 import { Provider } from 'react-redux';
+import { ProductsData } from './class-components/products-data.jsx';
 
 createRoot(document.getElementById('root')).render(
   
    <CookiesProvider>
       <Provider store={store}>
-         <ToDoIndex />
+         <ProductsData />
       </Provider>
    </CookiesProvider>
   
